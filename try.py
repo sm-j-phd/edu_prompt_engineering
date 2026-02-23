@@ -152,7 +152,7 @@ with c13:
 with c14:
     company = st.selectbox(
         "Role",
-        ["family.", "dad.", "mom.", "gradfather.", "gradmother.", "sister.", "brother.", "friends", "dog", "cat."],
+        ["friends", "family.", "dad.", "mom.", "gradfather.", "gradmother.", "sister.", "brother.", "dog", "cat."],
         label_visibility="collapsed",
     )
 
