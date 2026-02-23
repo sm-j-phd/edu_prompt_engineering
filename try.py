@@ -74,9 +74,7 @@ with c4:
     )
 
 # 🎯 Pronouns setting
-if "Dorothy" in target:
-    subj, obj, poss = "she", "her", "her"
-if "Alice" in target:
+if "Dorothy" in target or "Alice" in target:
     subj, obj, poss = "she", "her", "her"
 else:
     subj, obj, poss = "he", "him", "his"
@@ -180,7 +178,7 @@ with c15:
 with c16:
     format = st.selectbox(
         "Format",
-        ["framed photo format.", "film strip format."],
+        ["framed format with a wooden frame.", "polaroid format with a thin white border.", "film format with a thin black border."],
         label_visibility="collapsed",
     )
     
@@ -195,7 +193,7 @@ final_prompt_3 = f"Back in {target}'s elementary school, {subj} spent a wonderfu
 final_prompt_4 = f"In that place, there were something beautiful and nostalgic—{objects_str}."
 final_prompt_5 = f"{subj.capitalize()} had a happy time {activity} with {poss} loved {company}"
 final_prompt_6 = f"Create an image that captures this memory in a {style}"
-final_prompt_7 = f"Output it in a {format}"
+final_prompt_7 = f"The final image must be in a {format}"
 
 
 spacer(12)
