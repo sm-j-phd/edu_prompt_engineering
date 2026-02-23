@@ -56,7 +56,7 @@ with c1:
 with c2:
     subject = st.selectbox(
         "Role",
-        ["a cartoonist.", "a painter.", "a photographer."],
+        ["a painter.", "a cartoonist.", "a photographer."],
         label_visibility="collapsed",
     )
 
