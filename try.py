@@ -56,7 +56,7 @@ with c1:
 with c2:
     subject = st.selectbox(
         "Role",
-        ["an animator.", "a cartoonist.", "a filmmaker.", "a illustrator.", "a painter.", "a photographer."],
+        ["a cartoonist.", "a painter.", "a photographer."],
         label_visibility="collapsed",
     )
 
@@ -69,12 +69,14 @@ with c3:
 with c4:
     target = st.selectbox(
         "Target",
-        ["Dorothy", "Walter"],
+        ["Dorothy", "Walter", "Alice", "George"],
         label_visibility="collapsed",
     )
 
 # 🎯 Pronouns setting
 if "Dorothy" in target:
+    subj, obj, poss = "she", "her", "her"
+if "Alice" in target:
     subj, obj, poss = "she", "her", "her"
 else:
     subj, obj, poss = "he", "him", "his"
@@ -105,7 +107,7 @@ with c9:
     )
 with c10:
     time = st.selectbox(
-        "Time", ["sunrise.", "morning.", "afternoon.", "sunset.", "evening.", "night."], label_visibility="collapsed"
+        "Time", ["day.", "sunrise.", "sunset.", "night."], label_visibility="collapsed"
     )
 
 spacer(12)
