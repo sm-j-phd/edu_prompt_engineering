@@ -5,7 +5,11 @@ import requests
 
 POLLINATIONS_API_KEY = "pk_UdvJx68ughmUlX5O"
 
-st.set_page_config(page_title="The Memory Studio with AI", layout="wide", page_icon="🎨")
+st.set_page_config(
+    page_title="The Memory Studio with AI",
+    page_icon="🎨",
+    layout="centered" 
+)
 
 # ---------- Global CSS ----------
 st.markdown(
