@@ -180,7 +180,7 @@ with c15:
 with c16:
     format = st.selectbox(
         "Format",
-        ["framed photo format.", "polaroid photo with a thick white border."],
+        ["framed photo format.", "film strip format."],
         label_visibility="collapsed",
     )
     
@@ -237,30 +237,32 @@ if st.button("🚀 Generate All Images", type="primary", use_container_width=Tru
     if not st.session_state.prompt_cart:
         st.error("Please add items to the cart first.")
     else:
-        st.session_state.generated_images = []
 
-        for idx, prompt in enumerate(st.session_state.prompt_cart):
-            encoded_prompt = urllib.parse.quote(prompt)
-            seed = random.randint(1, 99999)
+        with st.spinner("🎨 Generating..."):
+            st.session_state.generated_images = []
 
-            image_url = (
-                f"https://gen.pollinations.ai/image/{encoded_prompt}"
-                f"?width=1024&height=1024&seed={seed}&model=flux&key={POLLINATIONS_API_KEY}"
-            )
+            for idx, prompt in enumerate(st.session_state.prompt_cart):
+                encoded_prompt = urllib.parse.quote(prompt)
+                seed = random.randint(1, 99999)
 
-            img_bytes = None
-            try:
-                r = requests.get(image_url, timeout=30)
-                r.raise_for_status()
-                img_bytes = r.content
-            except Exception:
+                image_url = (
+                    f"https://gen.pollinations.ai/image/{encoded_prompt}"
+                    f"?width=1024&height=1024&seed={seed}&model=flux&key={POLLINATIONS_API_KEY}"
+                )
+
                 img_bytes = None
+                try:
+                    r = requests.get(image_url, timeout=30)
+                    r.raise_for_status()
+                    img_bytes = r.content
+                except Exception:
+                    img_bytes = None
 
-            filename = f"memory_{idx+1}.png"
+                filename = f"memory_{idx+1}.png"
 
-            st.session_state.generated_images.append(
-                {"prompt": prompt, "url": image_url, "bytes": img_bytes, "filename": filename}
-            )
+                st.session_state.generated_images.append(
+                    {"prompt": prompt, "url": image_url, "bytes": img_bytes, "filename": filename}
+                )
 
         st.success(f"✅ Generated {len(st.session_state.generated_images)} images successfully!")
 
