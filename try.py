@@ -59,6 +59,8 @@ with c2:
         ["a painter.", "a cartoonist.", "a photographer."],
         label_visibility="collapsed",
     )
+    if subject == "Direct Input":
+        subject = st.text_input("Enter your role:", placeholder="e.g., a digital artist")
 
 spacer(10)
 
@@ -72,6 +74,7 @@ with c4:
         ["Dorothy", "Walter", "Alice", "George"],
         label_visibility="collapsed",
     )
+    
 
 # 🎯 Pronouns setting
 if "Dorothy" in target or "Alice" in target:
@@ -93,6 +96,10 @@ with c7:
     place = st.selectbox(
         "Place", ["a park", "a playground", "the beach", "home"], label_visibility="collapsed"
     )
+    if place_choice == "Direct Input":
+        place = st.text_input("Enter place:", placeholder="e.g., a hidden forest")
+    else:
+        place = place_choice
 
 c8, c9, c10 = st.columns([0.2, 0.4, 0.4], gap="small", vertical_alignment="center")
 
@@ -141,6 +148,10 @@ with c12:
         ],
         label_visibility="collapsed",
     )   
+    if activity_choice == "Direct Input":
+        activity = st.text_input("Enter activity:", placeholder="e.g., looking at the stars")
+    else:
+        activity = activity_choice
 
 spacer(10)
 
