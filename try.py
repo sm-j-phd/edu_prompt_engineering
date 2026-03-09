@@ -247,8 +247,8 @@ st.subheader("2️⃣ Your Prompt Board")
 if st.session_state.prompt_cart:
     for idx, p in enumerate(st.session_state.prompt_cart, start=1):
         # st.text(p)
-        # st.caption(f"Prompt #{idx}")
         st.code(p, language="text")
+        st.caption(f"📋 Do you want to copy this prompt? Hover over the board to reveal the copy button!")
 
     if st.button("Clear Board 🗑️"):
         st.session_state.prompt_cart = []
