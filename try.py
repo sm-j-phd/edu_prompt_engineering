@@ -1,3 +1,5 @@
+
+
 import streamlit as st
 import urllib.parse
 import random
@@ -22,6 +24,8 @@ button[data-testid="stPillsChip"] * { font-size: 1rem !important; }
 """,
     unsafe_allow_html=True,
 )
+
+
 
 # Clear session state variables
 if "prompt_cart" not in st.session_state:
@@ -55,8 +59,8 @@ st.subheader("1️⃣ Build your prompt")
 
 spacer(10)
 
-# position of toggle
-st.session_state.manual_mode = st.toggle("✨ If you'd liek to type your own keywords? Just click this toggle!", value=st.session_state.manual_mode)
+# toggle
+st.session_state.manual_mode = st.toggle("✨ If you'd like to type your own keywords, just click this toggle!", value=st.session_state.manual_mode)
 
 spacer(10)
 
@@ -178,7 +182,7 @@ with c14:
     if not st.session_state.manual_mode:
         company = st.selectbox(
             "Company",
-            ["friend.", "family.", "dad.", "mom.", "grandfather.", "grandmother.", "sister.", "brother.", "dog.", "cat."],
+            ["friend.", "family.", "dad.", "mom.", "grandfather.", "grandmother.", "sister.", "brother.", "dog", "cat."],
             label_visibility="collapsed",
         )
     else:
@@ -222,7 +226,7 @@ with c18:
 # ---- Prompt assembly ----
 final_prompt_1 = f"I am a {subject}"
 final_prompt_2 = f"I'll create an image that expresses the childhood memory of {target}."
-final_prompt_3 = f"Back in {target}'s elementary school, {subj} spent a wonderful time at a/an {place} on a {season} {time}"
+final_prompt_3 = f"Back in {target}'s elementary school, {subj} spent a wonderful time at {place} on a {season} {time}"
 final_prompt_4 = f"In that place, there were something beautiful and nostalgic—{objects_str}."
 final_prompt_5 = f"{subj.capitalize()} had a happy time {activity} with {poss} loved {company}"
 final_prompt_6 = f"Create an image that captures this memory in a {style}"
@@ -237,12 +241,14 @@ if st.button("Add to Prompt Board 📥", use_container_width=True):
     st.toast("Prompt added to board", icon="🛒")
 
 st.divider()
+
 st.subheader("2️⃣ Your Prompt Board")
 
 if st.session_state.prompt_cart:
     for idx, p in enumerate(st.session_state.prompt_cart, start=1):
-        st.text(p)
-        st.caption(f"Prompt #{idx}")
+        # st.text(p)
+        # st.caption(f"Prompt #{idx}")
+        st.code(p, language="text")
 
     if st.button("Clear Board 🗑️"):
         st.session_state.prompt_cart = []
@@ -250,8 +256,11 @@ if st.session_state.prompt_cart:
 else:
     st.write("Board is empty.")
 
+
 if "generated_images" not in st.session_state:
     st.session_state.generated_images = []
+
+
 
 st.divider()
 
@@ -313,6 +322,7 @@ if st.session_state.generated_images:
 
 
 
+# streamlit run try.py
 # # Local URL: http://localhost:8501
 # # Network URL: http://169.234.230.92:8501
 
