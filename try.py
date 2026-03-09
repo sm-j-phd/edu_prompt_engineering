@@ -60,7 +60,7 @@ st.subheader("1️⃣ Build your prompt")
 spacer(10)
 
 # toggle
-st.session_state.manual_mode = st.toggle("✨ If you'd like to type your own keywords, just click this toggle!", value=st.session_state.manual_mode)
+# st.session_state.manual_mode = st.toggle("✨ If you'd like to type your own keywords, just click this toggle!", value=st.session_state.manual_mode)
 
 spacer(10)
 
