@@ -178,7 +178,7 @@ with c14:
     if not st.session_state.manual_mode:
         company = st.selectbox(
             "Company",
-            ["friends", "family.", "dad.", "mom.", "grandfather.", "grandmother.", "sister.", "brother.", "dog", "cat."],
+            ["friend.", "family.", "dad.", "mom.", "grandfather.", "grandmother.", "sister.", "brother.", "dog.", "cat."],
             label_visibility="collapsed",
         )
     else:
