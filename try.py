@@ -56,18 +56,19 @@ def limit_company():
 # ============================================
 
 st.subheader("1️⃣ Build your prompt")
+# st.markdown("<span style='color: grey;'>*Let's consider the anatomy of a prompt—PARTS: Persona, Aim, Recipients, Theme, Structure*</span>", unsafe_allow_html=True)
 
 spacer(10)
 
-# toggle
-st.session_state.manual_mode = st.toggle("✨ If you'd like to type your own keywords, just click this toggle!", value=st.session_state.manual_mode)
+# # toggle
+# st.session_state.manual_mode = st.toggle("✨ If you'd like to type your own keywords, just click this toggle!", value=st.session_state.manual_mode)
 
 spacer(10)
 
 # 1) Role
-c1, c2 = st.columns([0.12, 0.88], gap="small", vertical_alignment="center")
+c1, c2 = st.columns([0.4, 0.6], gap="small", vertical_alignment="center")
 with c1:
-    st.markdown("I am")
+    st.markdown("I'll create an image as a prompter and")
 with c2:
     if not st.session_state.manual_mode:
         subject = st.selectbox(
@@ -83,7 +84,7 @@ spacer(10)
 # 2) Target 
 c3, c4 = st.columns([0.65, 0.35], gap="small", vertical_alignment="center")
 with c3:
-    st.markdown("I'll create an image that weaves the childhood memory of")
+    st.markdown("This image will express the childhood memory of")
 with c4:
     if not st.session_state.manual_mode:
         target = st.selectbox(
@@ -224,8 +225,8 @@ with c18:
 
 
 # ---- Prompt assembly ----
-final_prompt_1 = f"I am a {subject}"
-final_prompt_2 = f"I'll create an image that expresses the childhood memory of {target}."
+final_prompt_1 = f"I'll create an image as a prompter and {subject}"
+final_prompt_2 = f"This image will expresses the childhood memory of {target}."
 final_prompt_3 = f"Back in {target}'s elementary school, {subj} spent a wonderful time at {place} on a {season} {time}"
 final_prompt_4 = f"In that place, there were something beautiful and nostalgic—{objects_str}."
 final_prompt_5 = f"{subj.capitalize()} had a happy time {activity} with {poss} loved {company}"
@@ -248,7 +249,7 @@ if st.session_state.prompt_cart:
     for idx, p in enumerate(st.session_state.prompt_cart, start=1):
         # st.text(p)
         st.code(p, language="text")
-        st.caption(f"📋 Do you want to copy this prompt? Hover over the board to reveal the copy button!")
+        st.caption(f"Do you want to copy this prompt? Hover over the board to reveal the copy button!")
 
     if st.button("Clear Board 🗑️"):
         st.session_state.prompt_cart = []
