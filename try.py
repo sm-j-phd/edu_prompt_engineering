@@ -321,11 +321,3 @@ if st.session_state.generated_images:
         st.session_state.generated_images = []
         st.rerun()
 
-
-
-# streamlit run try.py
-# # Local URL: http://localhost:8501
-# # Network URL: http://169.234.230.92:8501
-
-
-
